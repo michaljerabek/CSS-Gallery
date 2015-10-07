@@ -30,7 +30,7 @@ html, body {
     transition: bottom 0.25s ease-in 0s, height 0s linear 0.25s;
 }
 
-#thumbs-list {
+#wrapper {
     text-align: center;
     font-size: 0;
     line-height: 0;
@@ -211,7 +211,7 @@ html, body {
     bottom: 0;
 }
 
-#ieLt8 #gallery #thumbs-list {
+#ieLt8 #gallery #wrapper {
     background: #000;
 }
 
