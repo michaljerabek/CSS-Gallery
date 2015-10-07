@@ -1,0 +1,236 @@
+html, body {
+    margin: 0;
+    
+    padding: 0;
+    height: 100%;
+    min-width: 320px;
+    min-height: 320px;    
+    
+    background-color: #000; 
+}
+
+#gallery * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#gallery {
+    z-index: 2;
+    position: fixed;
+    bottom: -17.5%;
+    left: 0;
+
+    height: 17.5%;
+    
+    width: 100%;
+    
+    transition: bottom 0.25s ease-in 0s, height 0s linear 0.25s;
+}
+
+#thumbs-list {
+    text-align: center;
+    font-size: 0;
+    line-height: 0;
+    white-space: nowrap;
+    
+    width: 100%;
+    height: 100%;
+    
+    background-color: rgba(0,0,0,0.75);
+    
+    overflow: auto;
+}
+
+#thumbs:checked ~ #gallery {
+    bottom: 0%;
+
+    transition: bottom 0.25s ease-out 0s, height 0s linear 0s;
+}
+
+#thumbs ~ #gallery [for="thumbs"] .close,
+#thumbs:checked ~ #gallery [for="thumbs"] .open {
+	display: none;
+}
+
+#thumbs ~ #gallery [for="thumbs"] .open,
+#thumbs:checked ~ #gallery [for="thumbs"] .close {
+	display: block;
+}
+
+#gallery [for="thumbs"] {
+    font-family: open-sans, sans-serif;
+    font-size: 20px;
+    font-size: calc(10px + (100vmin / 100));
+    text-transform: uppercase;
+    line-height: 1.8;
+    font-weight: 300;
+    
+    position: fixed;
+    bottom: 0%;
+    left: 0%;
+    
+    padding: 0 1.35%;
+    
+    color: #fff;
+    background-color: rgba(0,0,0,0.75);
+    
+    cursor: default;
+    transition: bottom 0.25s ease-in 0s;
+}
+
+#gallery [for="thumbs"] span {
+    color: #aaa;
+    
+    cursor: pointer;    
+    transition: color 0.25s ease-in 0s;
+}
+
+#thumbs:checked ~ #gallery [for="thumbs"] {
+    bottom: 17.5%;
+    
+    transition: bottom 0.25s ease-out 0s;
+}
+
+#thumbs:focus ~ #gallery [for="thumbs"] span,
+#gallery [for="thumbs"] span:hover {
+    color: #fff;
+    
+    transition: color 0.25s ease-out 0s;
+}
+
+#gallery .img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    visibility: hidden;
+    z-index: -2;
+    transition: visibility 0s linear 0.5s;
+}
+
+#gallery .img > img {
+    margin: auto;        
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    transform-origin: 50% 65%;
+    transform: perspective(1000px) translateZ(-350px);
+
+    max-width: 100%;
+    max-height: 100%;
+
+    opacity: 0;
+    transition: transform 0s ease-in 0.5s, 
+        opacity 0.5s cubic-bezier(0, .49, .61, 1) 0s;
+
+    display: block;
+}
+
+#gallery input:checked + .thumb + .img img {
+    transform: perspective(1000px) translateZ(0px);
+
+    opacity: 1;
+    transition: transform 1s cubic-bezier(1, -0.25, .53, .96) 0s,
+        opacity 0.5s ease-out 0s;
+}
+
+#gallery .thumb {
+    text-align: center;
+    font-size: 0;
+    line-height: 0;
+    
+    padding: 1%;
+    *padding: 0%;
+
+    height: 100%;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    *display: inline;
+    *zoom: 1;
+    display: inline-block;
+}
+
+#gallery .thumb ~ .thumb {
+    padding-left: 0;
+}
+
+#gallery .thumb img {
+    height: 100%;
+    
+    border: 2px solid transparent;
+    *border: none;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    transition: border 0.25s ease-in 0s;
+    display: block;
+}
+
+#gallery input, #thumbs {
+    position: fixed;
+    left: -10000px;
+    
+    opacity: 0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+
+#gallery input:checked + .thumb + .img {
+    visibility: visible;
+    z-index: -1;
+    transition: visibility 0s linear 0s;
+}
+
+#gallery input:checked + .thumb img {
+    border-color: #f7c700;
+    
+    transition: border 0.5s ease-out 0s;
+}
+
+#gallery .thumb:hover img {
+    border-color: #aaa;
+    
+    transition: border 0.25s ease-out 0s;
+}
+
+/******************************/
+
+#ieLt8 #gallery {
+    bottom: 0;
+}
+
+#ieLt8 #gallery #thumbs-list {
+    background: #000;
+}
+
+#ieLt8 [for="thumbs"] {
+    display: none;    
+}
+
+#ieLt8 #gallery .img {
+    height: 82.5%;
+}
+
+#ieLt8 #gallery [checked] + .thumb + .img,
+#ieLt8 #gallery .thumb:hover + .img,
+#ieLt8 #gallery .img:hover {
+    visibility: visible;
+    z-index: -1;
+}
+
+#ieLt8 #gallery .thumb:hover + .img ~ .img,
+#ieLt8 #gallery .img:hover ~ .img {
+    visibility: hidden;
+}
