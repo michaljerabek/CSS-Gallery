@@ -1,2 +1,2 @@
 # CSS Gallery
-Image gallery using only CSS
+Image gallery using only CSS that "works" even in IE7
